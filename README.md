@@ -4,6 +4,12 @@ Basic Admin Dashboard for Masonite Project using tailwindcss.
 
 Tailwindcss components are from [flowbite](https://flowbite.com/).
 
+|  				  | Version |
+|-----------------|---------|
+| Masonite Project| 4.13.0  |                  
+| Masonite ORM    | 2.10.0  |        
+         
+
 ## Requirements
 
 In order to use Masonite, you’ll need:
@@ -23,10 +29,7 @@ Although this step is technically optional, it is highly recommended. You can cr
 - Rename or copy `.env.example` file to `.env`
 - Run `python craft key`
 - Set your database credentials in your `.env` file
-- Run the migrations: `python craft migrate`
 - Run the development server: `python craft serve`
-- Visit register page : `http://127.0.0.1:8000/register`
-- Visit login page : `http://127.0.0.1:8000/login`
 
 ## Note
 
