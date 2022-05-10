@@ -1,0 +1,136 @@
+<!-- Root element for center items -->
+{% extends 'auth/base.html' %} {% block content %}
+<div class="flex flex-col h-screen bg-gray-100">
+  <!-- Profile Card Container -->
+  <div class="grid place-items-center mx-2 my-20">
+    <h3 class="my-2 text-center text-2xl font-bold text-gray-800">Profile</h3>
+    <!-- Profile Card -->
+    <div
+      class="w-11/12 p-12 sm:w-8/12 md:w-6/12 lg:w-5/12 2xl:w-4/12 px-6 py-10 sm:px-10 sm:py-6 bg-white rounded-lg shadow-md lg:shadow-lg"
+    >
+      <form action="/profile" method="POST">
+        {{ csrf_field }}
+        <div class="grid xl:grid-cols-2 xl:gap-6">
+            <div class="relative z-0 w-full mb-6 group">
+              <input
+                type="text"
+                value="{{ auth().firstname }}"
+                name="first_name"
+                id="first_name"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="first_name"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >First name</label
+              >
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+              <input
+                type="text"
+                value="{{ auth().lastname }}"
+                name="last_name"
+                id="last_name"
+                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                for="last_name"
+                class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >Last name</label
+              >
+            </div>
+          </div>
+          <div class="relative z-0 w-full mb-6 group">
+            <input
+              type="tel"
+              value="{{ auth().phone if auth().phone else '' }}"
+              name="phone"
+              id="phone"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+              placeholder=" "
+             
+            />
+            <label
+              for="phone"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >Phone number (123-456-7890)</label
+            >
+          </div>
+        <div class="relative z-0 w-full mb-6 group">
+          <input
+            type="email"
+            name="email"
+            value="{{ auth().email }}"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+            placeholder=" "
+            
+          />
+          <label
+            for="email"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Email address</label
+          >
+        </div>
+        <div class="relative z-0 w-full mb-6 group">
+          <input
+            type="password"
+            name="current_password"
+            id="current_password"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+            placeholder=" "
+            
+          />
+          <label
+            for="current_password"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Current Password</label
+          >
+          <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">Leave it blank if you don't want to change the password.</p>
+        </div>
+        <div class="relative z-0 w-full mb-6 group">
+            <input
+              type="password"
+              name="new_password"
+              id="new_password"
+              class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+              placeholder=" "
+              
+            />
+            <label
+              for="new_password"
+              class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >New Password</label
+            >
+          </div>
+        <div class="relative z-0 w-full mb-6 group">
+          <input
+            type="password"
+            name="repeat_new_password"
+            id="repeat_new_password"
+            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-gray-500 focus:outline-none focus:ring-0 focus:border-gray-600 peer"
+            placeholder=" "
+         
+          />
+          <label
+            for="repeat_new_password"
+            class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600 peer-focus:dark:text-gray-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            >Confirm new password</label
+          >
+        </div>
+        
+        <button
+          type="submit"
+          class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

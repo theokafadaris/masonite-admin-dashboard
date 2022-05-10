@@ -1,0 +1,19 @@
+# python
+*.pyc
+*__pycache__
+.pytest_cache
+venv
+# environment
+.env
+.env.*
+!.env.testing
+# npm
+node_modules
+package-lock.json
+# sqlite
+*.sqlite3
+.vscode
+**/*.DS_Store
+
+# compiled assets
+storage/compiled
